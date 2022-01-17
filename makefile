@@ -2,13 +2,16 @@ CC=gcc
 CFLAGS=-c -Wall
 
 
-all: run
+all: stack
 
-run: main.o 
-	$(CC) main.o -o run
+stack: stack.o  dstruct.o
+	$(CC) dstruct.o stack.o -o stack
 
-main.o: main.c
-	$(CC) $(CFLAGS) main.c
+stack.o:  stack.c
+	$(CC) $(CFLAGS) stack.c
+
+dstruct.o: dstruct.c dstruct.h
+	$(CC) $(CFLAGS) dstruct.c 
 
 clean:
-	rm -rf *.o main run
+	rm -rf *.o dstruct stack
